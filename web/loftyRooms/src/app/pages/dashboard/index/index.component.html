@@ -1,0 +1,119 @@
+<section>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card_wrapper">
+                <div class="cardHeader">
+                    <h2>Active Booking</h2>
+                </div>
+                <div class="cardBody">
+                    <h5>Booking</h5>
+                    <h6>{{activeCount}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card_wrapper">
+                <div class="cardHeader">
+                    <h2>Booked Booking</h2>
+                </div>
+                <div class="cardBody">
+                    <h5>Booking</h5>
+                    <h6>{{bookedCount}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card_wrapper">
+                <div class="cardHeader">
+                    <h2>Past Booking</h2>
+                </div>
+                <div class="cardBody">
+                    <h5>Booking</h5>
+                    <h6>{{pastCount}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card_wrapper">
+                <div class="cardHeader">
+                    <h2>Rejected Booking</h2>
+                </div>
+                <div class="cardBody">
+                    <h5>Booking</h5>
+                    <h6>{{rejectCount}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row home_cards mt-5">
+    <div class="col-lg-6 ">
+        <div class="card p-3 h-100">
+            <canvas id="MyChart">{{ chart }}</canvas>
+        </div>
+    </div>
+    <div class="col-lg-6 ">
+        <div class="card p-3 m-0" style="height: 100%;">
+            <h4><b>Partner Rejected Booking</b></h4>
+            <div class="datatbale__main__wrapper" noCopy>
+                <dx-data-grid [dataSource]="rejectedbookingList" [columnAutoWidth]="true"
+                    [columnResizingMode]="'widget'" [filterRow]="{ visible: true }"
+                    [paging]="{ pageSize: 5, pageIndex: 0 }" [searchPanel]="{ visible: true }" [showBorders]="true"
+                    [showRowLines]="true" [showColumnLines]="true" [sorting]="{ mode: 'multiple' }"
+                    [allowColumnReordering]="true">
+                    <dxi-column caption="Partner Name" dataField="partnerName"></dxi-column>
+                    <dxi-column caption="Customer Name" dataField="customerName"></dxi-column>
+                    <dxi-column caption="Rejection Count" dataField="rejectionCount"></dxi-column>
+                    <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                </dx-data-grid>
+                <!-- <div>
+                    <h4 class="mt-2">Total Records: {{total_rejectedbooking}}</h4>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="datatbale__main__wrapper" noCopy>
+            <dx-data-grid [dataSource]="bookingList" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+                [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }"
+                [searchPanel]="{ visible: true }" [showBorders]="true" [showRowLines]="true" [showColumnLines]="true"
+                [sorting]="{ mode: 'multiple' }" [allowColumnReordering]="true">
+                <dxi-column caption="BookingId" dataField="bookingId"></dxi-column>
+                <!-- <dxi-column caption="BookingNumber" dataField="bookingNumber"></dxi-column> -->
+                <dxi-column caption="AdId" dataField="adId"></dxi-column>
+                <dxi-column caption="Hotel Name" dataField="hotelName"></dxi-column>
+                <dxi-column caption="Partner Name" dataField="partnerName"></dxi-column>
+                <dxi-column caption="Customer Name" dataField="customerName"></dxi-column>
+                <dxi-column caption="Price" dataField="price"></dxi-column>
+                <dxi-column caption="Room Type" dataField="roomType"></dxi-column>
+                <dxi-column caption="CheckIn Date" cellTemplate="checkedIn"></dxi-column>
+                <div *dxTemplate="let d of 'checkedIn'">
+                    {{d.data.checkedIn | date:'longDate':'':'en-US'}}
+                </div>
+
+                <dxi-column caption="CheckOut Date" cellTemplate="checkOut"></dxi-column>
+                <div *dxTemplate="let d of 'checkOut'">
+                    {{d.data.checkOut | date:'longDate':'':'en-US'}}
+                </div>
+                <dxi-column caption="Status" alignment="center" cellTemplate="bookingList"></dxi-column>
+                <div *dxTemplate="let d of 'bookingList'">
+                    <p *ngIf="checkStatus(d) !== null">{{statusData}}</p>
+                </div>
+                <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+            </dx-data-grid>
+            <!-- <div>
+                <h4>Total Records: {{total_booking}}</h4>
+            </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+
+@media(min-width:320px) and (max-width:767px){
+		.login-img {
+	    height: 60%;
+		}
+		.login-Leftsection {
+	    height: 49vh;
+		}
+		.loginForm-Content {
+		    margin-left: 0px;
+		    text-align: center;
+		    margin-top: 15px;
+		}
+		.cnic-Wraper:after{
+			left: 60px;
+		}
+		.password-Wrapper:after{
+			left: 60px;
+		}
+		.remember-wrapper{
+			margin-left: 35px;
+    		margin-bottom: 10px !important;
+		}
+	}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
+		.login-Leftsection{
+				height: 55vh;
+		}
+		.login-img {
+	    	height: 75%;
+		}
+		.loginForm-Content{
+			text-align: center;
+			margin-left: 0px;
+			padding: 50px 0px;
+		}
+		.cnic-Wraper:after{
+			left: 100px;
+		}
+		.password-Wrapper:after{
+			left: 100px;
+		}
+		.remember-wrapper{
+			margin-left: 75px;
+    		margin-bottom: 10px !important;
+		}
+	}	

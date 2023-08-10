@@ -1,0 +1,17 @@
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsDAL.deps.json
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsDAL.runtimeconfig.json
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsDAL.dll
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsDAL.pdb
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsModel.dll
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\bin\Release\net6.0\LoftyRoomsModel.pdb
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.csproj.AssemblyReference.cache
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.AssemblyInfoInputs.cache
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.AssemblyInfo.cs
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.csproj.CoreCompileInputs.cache
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.csproj.CopyComplete
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.dll
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\refint\LoftyRoomsDAL.dll
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.pdb
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\LoftyRoomsDAL.genruntimeconfig.cache
+D:\LoftyRooms\trunk\api\LoftyRoomsApi\LoftyRoomsDAL\obj\Release\net6.0\ref\LoftyRoomsDAL.dll

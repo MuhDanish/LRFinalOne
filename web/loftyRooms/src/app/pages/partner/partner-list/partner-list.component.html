@@ -1,0 +1,139 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">Partner List</h6>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="action__btn_wrapper">
+            <ul class="justify-content-end main_upload_scripts_list">
+                <li>
+                    <button [routerLink]="['/add_partner','0']" *ngIf="service.IsAuthorized('11')"
+                        class="common-btn-style"><img src="../../../../assets/dist/img/plus.svg"> Add Partner</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="datatbale__main__wrapper" noCopy>
+            <dx-data-grid [dataSource]="partnerList" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+                [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }"
+                [searchPanel]="{ visible: true }" [showBorders]="true" [showRowLines]="true" [showColumnLines]="true"
+                [sorting]="{ mode: 'multiple' }" [allowColumnReordering]="true" [export]="{enabled:canExportgroups}">
+
+                <dxi-column caption="Actions" alignment="center" cellTemplate="partnerList"></dxi-column>
+
+                <div *dxTemplate="let d of 'partnerList'">
+                    <button class="custom__btn custom__btn_edit editgroupclick" *ngIf="service.IsAuthorized('11')"
+                        (click)="EditPartner(d)"><i class="fa fa-edit"></i></button>
+                    <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('13')"
+                        (click)="DeletePartner(d)"><i class="fa fa-trash"></i></button>
+                    <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('12')"
+                        (click)="openPopup(d.data,content)"><i class="fa fa-user"></i></button>
+                </div>
+
+                <dxi-column caption="First Name" dataField="firstName"></dxi-column>
+                <dxi-column caption="Last Name" dataField="lastName"></dxi-column>
+                <dxi-column caption="Email" dataField="email"></dxi-column>
+                <dxi-column caption="Phone" dataField="phone"></dxi-column>
+                <dxi-column caption="Address" dataField="address"></dxi-column>
+                <dxi-column caption="City" dataField="city"></dxi-column>
+                <dxi-column caption="State" dataField="state"></dxi-column>
+                <dxi-column caption="ZipCode" dataField="zipCode"></dxi-column>
+
+                <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+            </dx-data-grid>
+            <div class="mt-2">
+                <h4>Total Records: {{totalRecords}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">Partner Detail</h6>
+        </div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="partnerModal">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">First Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName"
+                            tabindex="1" maxlength="50" readonly>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Last Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName"
+                            tabindex="2" maxlength="50" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Email<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Email" formControlName="Email" tabindex="3"
+                            maxlength="50" readonly>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">City<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="City" formControlName="City" tabindex="5"
+                            maxlength="50" readonly>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">State<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="State" formControlName="State" tabindex="6"
+                            maxlength="50" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">ZipCode<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="ZipCode" formControlName="ZipCode"
+                            tabindex="7" maxlength="50" readonly>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Phone<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Phone" formControlName="Phone" tabindex="8"
+                            maxlength="50" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Address<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Address" formControlName="Address"
+                            tabindex="4" maxlength="50" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="text-end pr-2 mt-5">
+                <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

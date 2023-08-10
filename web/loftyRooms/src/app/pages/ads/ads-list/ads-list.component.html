@@ -1,0 +1,52 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">Ads List</h6>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="action__btn_wrapper">
+            <ul class="justify-content-end main_upload_scripts_list">
+                <li>
+                    <button [routerLink]="['/add_ads','0']" *ngIf="service.IsAuthorized('31')"
+                        class="common-btn-style"><img src="../../../../assets/dist/img/plus.svg"> Add Ads</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="datatbale__main__wrapper" noCopy>
+            <dx-data-grid [dataSource]="adsList" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+                [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }"
+                [searchPanel]="{ visible: true }" [showBorders]="true" [showRowLines]="true" [showColumnLines]="true"
+                [sorting]="{ mode: 'multiple' }" [allowColumnReordering]="true" [export]="{enabled:canExportgroups}">
+
+                <dxi-column caption="Actions" alignment="center" cellTemplate="adsList"></dxi-column>
+
+                <div *dxTemplate="let d of 'adsList'">
+                    <button class="custom__btn custom__btn_edit editgroupclick" *ngIf="service.IsAuthorized('31')"
+                        (click)="EditAds(d)"><i class="fa fa-edit"></i></button>
+                    <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('33')"
+                        (click)="DeleteAds(d)"><i class="fa fa-trash"></i></button>
+                </div>
+
+                <dxi-column caption="Ad Id" dataField="adId"></dxi-column>
+                <dxi-column caption="Partner Name" dataField="partnerName"></dxi-column>
+                <dxi-column caption="Hotel Name" dataField="hotelName"></dxi-column>
+                <dxi-column caption="Room Type" dataField="roomType"></dxi-column>
+                <dxi-column caption="No Of Bed" dataField="noOfBed"></dxi-column>
+                <dxi-column caption="Price" dataField="price"></dxi-column>
+                <dxi-column caption="Description" dataField="description"></dxi-column>
+                <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+            </dx-data-grid>
+            <div class="mt-2">
+                <h4>Total Records: {{totalRecords}}</h4>
+            </div>
+        </div>
+    </div>
+</div>

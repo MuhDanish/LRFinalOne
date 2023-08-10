@@ -1,0 +1,33 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">Help And Support</h6>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="datatbale__main__wrapper" noCopy>
+            <dx-data-grid [dataSource]="helpandsupportdata" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+                [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }"
+                [searchPanel]="{ visible: true }" [showBorders]="true" [showRowLines]="true" [showColumnLines]="true"
+                [sorting]="{ mode: 'multiple' }" [allowColumnReordering]="true">
+
+                <dxi-column caption="Customer Name" dataField="customerName"></dxi-column>
+                <dxi-column caption="Email" dataField="email"></dxi-column>
+                <dxi-column caption="Mobile" dataField="mobile"></dxi-column>
+                <dxi-column caption="Message" dataField="message"></dxi-column>
+                <dxi-column caption="Date" cellTemplate="createdDate"></dxi-column>
+                <div *dxTemplate="let d of 'createdDate'">
+                    {{d.data.createdDate | date:'longDate':'':'en-US'}}
+                </div>
+                <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+            </dx-data-grid>
+            <div>
+                <h4>Total Records: {{total_data}}</h4>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.mat-form-field{
+    width: 100%;
+}
+.btn-block{
+    width: 100%;
+}
+.login-info-header-logo img{
+    width: 140px;
+}
+.loginForm-Wrapper{
+    background:#fff;
+    padding: 40px 50px;
+    border-radius: 40px;
+    width: 100%;
+}
+.login-Rigthsection{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.LoginSection{
+	background: #272A5F !important;
+    height: 100vh;
+}
+.cnic-Wraper input , .password-Wrapper input , .loginbtn-wrapper input{
+	border-radius: 60px;
+    background: #E6E6E6;
+    padding: 15px 0px 15px 65px;
+    font-size: 12px;
+	border: none;
+	outline: none;
+	width: 100%;
+	
+}
+.loginbtn-wrapper input{
+	border-radius: 60px;
+    background: linear-gradient(180deg, #3E4292 0%, #000336 100%);
+    color: #fff;
+	font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+	text-align: center;
+	padding: 15px;
+	
+}
+.loginForm-Content{
+	margin-left: 0px;
+}
+.loginForm-heading h5{
+    font-size: calc(1.275rem + .3vw);
+	font-weight: 600;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    color: #272A5F;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}

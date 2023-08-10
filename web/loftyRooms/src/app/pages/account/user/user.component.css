@@ -1,0 +1,7 @@
+.main_upload_scripts_list > li{
+    cursor: pointer;
+}
+table.dataTable thead th, table.dataTable tbody td{
+    white-space: nowrap;
+    border : 1pt solid rgba(0, 0, 0, 0.15);
+}

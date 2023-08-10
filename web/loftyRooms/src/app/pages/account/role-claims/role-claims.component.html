@@ -1,0 +1,42 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">Role Claims</h6>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="action__btn_wrapper">
+            <ul class="justify-content-end">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-select-wrapper">
+            <label class="form-label">Role</label>
+            <select class="form-select" aria-label="Default select example" (change)="OnRoleChange($event)"
+                tabindex="1">
+                <option selected value="">Select Role</option>
+                <option *ngFor="let item of roleList" [value]="item.roleId">
+                    {{item.roleName}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div *ngFor="let group of groupClaims | keyvalue" class="mt-3">
+            <h3>{{ group.key }}</h3>
+            <ul>
+                <li *ngFor="let item of $any(group).value" class="ml-3">
+                    <mat-checkbox [checked]="item.isSelected == '1'" (change)="IsItemSelected($event,item)"> {{
+                        item.claimName }}</mat-checkbox>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-end mb-5" [hidden]="IsShowBtn"><button class="btn btn-primary" (click)="UpdateRoleClaims()">Update
+            Claims</button></div>
+</div>

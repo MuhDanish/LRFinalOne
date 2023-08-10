@@ -1,0 +1,113 @@
+<section class="LoginSection">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <!-- <div class="col-lg-8 login-Leftsection">
+                <div class="login-Leftsection-img text-center">
+                    <img src="assets/dist/img/dashboard/logowhite.png" class="img-fluid">
+                </div>
+                <div class="login-img">
+                    <img src="assets/dist/img/dashboard/login-img.png" class="img-fluid">
+                </div>
+            </div> -->
+      <div class="col-lg-5">
+        <div class="login-Rigthsection">
+          <div class="loginForm-Wrapper">
+            <div class="login-info-header">
+              <div class="login-info-header-logo text-center">
+                <img src="assets/dist/img/logo.png" alt="logo">
+              </div>
+            </div>
+            <div class="loginForm-Content mt-5">
+              <div class="loginForm-heading">
+                <h5>Dashboard</h5>
+                <p>Welcome Back</p>
+              </div>
+              <div class="loginForm">
+                <form [formGroup]="loginModal" (ngSubmit)="Login()">
+                  <div class="cnic-Wraper">
+                    <input type="text" name="username" placeholder="User Name" formControlName="UserName">
+                    <span *ngIf="loginModal.controls['UserName'].invalid && loginModal.controls['UserName'].touched">
+                      <span *ngIf="loginModal.controls['UserName'].errors?.['required']">
+                        User Name is required.
+                      </span>
+                      <span *ngIf="loginModal.controls['UserName'].errors?.['minlength']">
+                        User Name at least 3 characters.
+                      </span>
+                    </span>
+                  </div>
+                  <div class="password-Wrapper">
+                    <input type="password" name="password" placeholder="Password" formControlName="Password">
+                    <span *ngIf="loginModal.controls['Password'].invalid && loginModal.controls['Password'].touched">
+                      <span *ngIf="loginModal.controls['Password'].errors?.['required']">
+                        Password is required.
+                      </span>
+                      <span *ngIf="loginModal.controls['Password'].errors?.['minlength']">
+                        Password at least 3 characters.
+                      </span>
+                    </span>
+                  </div>
+                  <div class="remember-wrapper d-flex mb-4">
+                    <input type="checkbox" name="Remember-Me">
+                    <label>Remember Me</label>
+                  </div>
+                  <div class="loginbtn-wrapper mb-2">
+                    <span class="text-danger">{{error_message}}</span>
+                    <input type="submit" name="loginbtn" value="Login">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- <div class="dashboard_wrapper">
+    <div class="container">
+
+      <div class="row justify-content-end">
+        <div class="col-lg-5">
+          <div class="main_section">
+            <div class="main-section-content-wrapper">
+              <div class="login-info-header">
+                <div class="login-info-header-logo text-center">
+                  <img src="assets/dist/img/logo.png" alt="logo">
+                </div>
+              </div>
+              <div class="login-body mt-5">
+                <h4>Dashboard</h4>
+                <label class="pre">Welcome Back</label>
+                <div class="login-input-wrapper mt-4">
+                  <div class="login-input">
+                    <input type="text" name="" placeholder="User/Email" class="loginInput">
+                    <div class="inputIcon-wrapper">
+                      <i class="fa fa-user-o"  aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="login-input-wrapper mt-3">
+                  <div class="login-input">
+                    <input type="password" name="" placeholder="Password" class="loginInput">
+                    <div class="inputIcon-wrapper">
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-check mt-3">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Remember Me
+                  </label>
+                </div>
+                <div class="submitBtn mt-5">
+                  <button type="submit">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,0 +1,55 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">{{innerHTML}}</h6>
+        </div>
+    </div>
+</div>
+
+<form [formGroup]="packageModal" (ngSubmit)="AddUpdatePackage()">
+    <div class="mt-3">
+        <div class="row mt-4">
+            <div class="col-lg-2 form-input-wrapper">
+                <img [src]="PromotionalPictureView" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="PromotionalImage" accept=".png, .jpg, .jpeg"
+                    (change)="onFileChange($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage">
+                    <p class="text-danger" *ngIf="f['PromotionalImage'].value ==''">Select the Image Only</p>
+                </div>
+            </div>
+            <div class="col-lg-10 mt-4">
+                <div class="col-lg-8">
+                    <input type="hidden" formControlName="PackageId">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Promotional Text</label>
+                        <input type="text" class="form-control" placeholder="Promotional Text"
+                            formControlName="PromotionalText" maxlength="100" tabindex="1">
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['PromotionalText'].invalid && f['PromotionalText'].touched">
+                            <small class="text-muted text-danger"
+                                *ngIf="f['PromotionalText'].errors?.['required']">Promotional Text is required.</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">DiscountPercentage<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control onlyNoEnter" placeholder="Discount Percentage"
+                            formControlName="DiscountPercentage" tabindex="2">
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['DiscountPercentage'].invalid && f['DiscountPercentage'].touched">
+                            <small class="text-muted text-danger"
+                                *ngIf="f['DiscountPercentage'].errors?.['required']">Discount Percentage is
+                                required.</small>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center pb-5 pt-5">
+        <button type="button" class="btn btn-default" tabindex="29" (click)="resetjobModal()">Reset</button>
+        <button type="submit" class="btn btn-primary" tabindex="28">{{Sumbit_btn_text}}</button>
+    </div>
+</form>

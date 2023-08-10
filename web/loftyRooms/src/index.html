@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LoftyRooms</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/dist/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./assets/dist/css/adminlte.min2167.css?v=3.2.0">
+  <link rel="stylesheet" href="./assets/dist/css/modified-style.css">
+  <link rel="stylesheet" href="./assets/dist/css/responsive.css">
+</head>
+
+<body class="mat-typography hold-transition sidebar-mini layout-fixed">
+  <app-root></app-root>
+  <script src="./assets/dist/jquery/jquery.min.js"></script>
+  <script src="./assets/dist/js/adminlte.min2167.js?v=3.2.0"></script>
+
+  <script>
+    $(document).ready(function () {
+      $(document).on('keyup','.onlyNoEnter', function () {
+        var inputValue = $(this).val();
+        var numericValue = inputValue.replace(/[^0-9]/g, '');
+        $(this).val(numericValue);
+      });
+
+      var url = window.location.href;
+      if (url.indexOf('add_job') != -1) {
+        $('.nav-treeview').find('.add_job').parents('li').eq(1).addClass('menu-open');
+        $('.nav-treeview').find('.add_job').addClass('active-route');
+      }
+      if (url.indexOf('add_group') != -1) {
+        $('.nav-treeview').find('.add_group').parents('li').eq(1).addClass('menu-open');
+        $('.nav-treeview').find('.add_group').addClass('active-route');
+      }
+      if (url.indexOf('add_resource') != -1) {
+        $('.nav-treeview').find('.add_resource').parents('li').eq(1).addClass('menu-open');
+        $('.nav-treeview').find('.add_resource').addClass('active-route');
+      }
+    });
+    $(document).on('click', '.editjobclick', function () {
+      $('.nav-treeview').find('.add_job').parents('li').eq(1).addClass('menu-open');
+      $('.nav-treeview').find('.add_job').addClass('active-route');
+    });
+    $(document).on('click', '.editgroupclick', function () {
+      $('.nav-treeview').find('.add_group').parents('li').eq(1).addClass('menu-open');
+      $('.nav-treeview').find('.add_group').addClass('active-route');
+    });
+    $(document).on('click', '.editCandidateClick', function () {
+      $('.nav-treeview').find('.add_resource').parents('li').eq(1).addClass('menu-open');
+      $('.nav-treeview').find('.add_resource').addClass('active-route');
+    });
+    $(document).on('click', '.nav a', function () {
+      $('.nav').find('a').removeClass('active-route');
+      $(this).addClass('active-route');
+    });
+
+    $(document).on('click', '.parent-li', function () {
+      var currentclic = $(this);
+      var parent = $(currentclic).parents('ul');
+      $(parent).find('li').removeClass('menu-open menu-is-opening');
+      $(parent).find('li').find('ul').css('display','');
+      $(currentclic).addClass('menu-open menu-is-opening');
+    });
+
+  </script>
+</body>
+
+</html>

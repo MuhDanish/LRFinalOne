@@ -1,0 +1,196 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">User</h6>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="action__btn_wrapper">
+            <ul class="justify-content-end main_upload_scripts_list">
+                <li>
+                    <button (click)="openPopup(content)" class="common-btn-style" *ngIf="service.IsAuthorized('1')"><img
+                            src="../../../../assets/dist/img/plus.svg"> Add User</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="datatbale__main__wrapper">
+            <dx-data-grid [dataSource]="userList" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+                [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }"
+                [searchPanel]="{ visible: true }" [showBorders]="true" [showRowLines]="true" [showColumnLines]="true"
+                [sorting]="{ mode: 'multiple' }" [allowColumnReordering]="true">
+
+                <dxi-column caption="Actions" alignment="center" cellTemplate="discountCellTemplate"></dxi-column>
+
+                <div *dxTemplate="let d of 'discountCellTemplate'">
+                    <button class="custom__btn custom__btn_edit" *ngIf="service.IsAuthorized('1')"
+                        (click)="EditUser(d.data,content)"><i class="fa fa-edit"></i></button>
+                    <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('3')"
+                        (click)="DeleteUser(d.data.userId)"><i class="fa fa-trash"></i></button>
+                    <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('10')"
+                        (click)="GetUserRoleList(d.data.userId,content2)"><i class="fa fa-user"></i></button>
+                </div>
+
+                <dxi-column caption="User Id" dataField="userId"></dxi-column>
+                <dxi-column caption="First Name" dataField="userName"></dxi-column>
+                <dxi-column caption="Last Name" dataField="lastName"></dxi-column>
+                <dxi-column caption="Email" dataField="email"></dxi-column>
+                <dxi-column caption="Mobile" dataField="mobile"></dxi-column>
+                <dxi-column caption="Cnic" dataField="cnic"></dxi-column>
+
+                <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+
+            </dx-data-grid>
+            <div class="mt-2">
+                <h4>Total Records: {{total_user}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">User</h4>
+
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="userModal" (ngSubmit)="AddUpdateUser()">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="hidden" formControlName="UserId">
+                    <!-- <input type="hidden" formControlName="RoleId"> -->
+                    <div class="form-input-wrapper">
+                        <label class="form-label">First Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="First Name" formControlName="UserName"
+                            tabindex="1" maxlength="40">
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['UserName'].invalid && f['UserName'].touched">
+                            <small class="text-muted text-danger" *ngIf="f['UserName'].errors?.['required']">
+                                First Name is required.
+                            </small>
+                            <small class="text-muted text-danger" *ngIf="f['UserName'].errors?.['minlength']">
+                                First Name at least 3 characters.
+                            </small>
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Last Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName"
+                            tabindex="2" maxlength="40">
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['LastName'].invalid && f['LastName'].touched">
+                            <small class="text-muted text-danger" *ngIf="f['LastName'].errors?.['required']">
+                                Last Name is required.
+                            </small>
+                            <small class="text-muted text-danger" *ngIf="f['LastName'].errors?.['minlength']">
+                                Last Name at least 3 characters.
+                            </small>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Email<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Email" formControlName="Email" tabindex="3"
+                            maxlength="50">
+                        <small class="text-muted ps-3 text-danger" *ngIf="f['Email'].invalid && f['Email'].touched">
+                            <small class="text-muted text-danger" *ngIf="f['Email'].errors?.['required']">
+                                Email is required.
+                            </small>
+                            <small class="text-muted text-danger" *ngIf="f['Email'].errors?.['minlength']">
+                                Email at least 3 characters.
+                            </small>
+                            <small class="text-muted text-danger" *ngIf="f['Email'].errors?.['email']">
+                                Email is not valid.
+                            </small>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Password<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Password" formControlName="Password"
+                            tabindex="4" maxlength="50">
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['Password'].invalid && f['Password'].touched">
+                            <small class="text-muted text-danger" *ngIf="f['Password'].errors?.['required']">
+                                Password is required.
+                            </small>
+                            <small class="text-muted text-danger" *ngIf="f['Password'].errors?.['minlength']">
+                                Password at least 4 characters.
+                            </small>
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Cnic</label>
+                        <input type="text" class="form-control" placeholder="Cnic" formControlName="Cnic" tabindex="5"
+                            maxlength="13">
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-input-wrapper">
+                        <label class="form-label">Mobile</label>
+                        <input type="text" class="form-control" placeholder="Mobile" formControlName="Mobile"
+                            tabindex="6" maxlength="11">
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-12">
+                    <div class="form-select-wrapper">
+                        <label class="form-label">User Type<span class="text-danger">*</span></label>
+                        <select class="form-select" aria-label="Default select example" formControlName="RoleId"
+                            tabindex="7">
+                            <option selected value="">Select Type</option>
+                            <option *ngFor="let item of userType_list" [value]="item.roleId">
+                                {{item.roleName}}
+                            </option>
+                        </select>
+                        <small class="text-muted ps-3 text-danger"
+                            *ngIf="f['RoleId'].invalid && f['RoleId'].touched">
+                            <small class="text-muted text-danger"
+                                *ngIf="f['RoleId'].errors?.['required']">User Type is required.
+                            </small>
+                        </small>
+                    </div>
+                </div> -->
+            </div>
+            <div class="text-end pr-2 mt-4">
+                <button type="submit" class="btn btn-primary me-2" [innerHTML]="button_text"></button>
+                <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+
+<ng-template #content2 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Assign Roles</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li *ngFor="let item of role_List" class="ml-3">
+                <mat-checkbox [checked]="item.isSelected == '1'" (change)="IsItemSelected($event,item)"> {{
+                    item.roleName }}</mat-checkbox>
+            </li>
+        </ul>
+        <div class="text-end mt-4"><button class="btn btn-primary" (click)="AssignRoles()">Assign Roles</button></div>
+    </div>
+</ng-template>

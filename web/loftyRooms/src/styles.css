@@ -1,0 +1,227 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.modal>.modal-dialog>.modal-content {
+    box-shadow: 2px 0px 20px 0px !important;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.success-dialog {
+    background-color: #198754;
+    margin: 0 !important;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+}
+
+.error-dialog {
+    background-color: #dc3545;
+}
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+    z-index: 99999 !important;
+}
+
+.dt-buttons>.buttons-excel,
+.buttons-print {
+    background-color: #14acdb;
+    color: white;
+    font-weight: 500;
+    border: 1px solid #14acdb;
+    padding: 7px;
+}
+
+table.dataTable {
+    width: 100% !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-top: 11px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #00000099;
+}
+
+.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
+    padding-left: 10px !important;
+}
+
+.mat-select-panel {
+    margin-top: 35px;
+}
+
+
+.form-input-wrapper input,
+.form-select-wrapper select,
+.form-textarea-wrapper textarea {
+    /* background: #F0F0F0;
+    border-radius: 15px;
+    border: none;
+    padding: 10px 16px;
+    color: #6F6F6F; */
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    color: #6F6F6F;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: white
+    ;
+}
+.upload_file_text input::before {
+    content: "Pick file";
+    position: absolute;
+    z-index: 2;
+    display: block;
+    background-color: #eee;
+    width: 80px;
+}
+
+.form-input-wrapper,
+.form-select-wrapper,
+.form-textarea-wrapper {
+    margin-top: 7px;
+}
+
+.upload_file_text input input[type=file] {
+    margin-left: -2px !important;
+}
+
+.upload_file_text input input[type=file]::-webkit-file-upload-button {
+    display: none;
+}
+
+.upload_file_text input input[type=file]::file-selector-button {
+    display: none;
+}
+
+.upload_file_text input:hover label {
+    background-color: #dde0e3;
+    cursor: pointer;
+}
+
+
+
+.form-input-wrapper input:focus,
+.form-select-wrapper select:focus,
+.form-textarea-wrapper textarea:focus {
+    box-shadow: none;
+    background-color: white;
+    outline: none !important;
+}
+
+.form-select {
+    background-image: url("assets/dist/img/dropdown-img.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 16px 12px !important;
+    line-height: unset;
+}
+
+.form-input-wrapper label,
+.form-select-wrapper label,
+.form-textarea-wrapper label {
+    padding-left: 6px;
+    color: #6F6F6F;
+}
+
+.form-input-wrapper small,
+.form-select-wrapper small,
+.form-textarea-wrapper small {
+    color: red !important;
+}
+
+.active-route {
+    /* background-color: #D0F4FF !important; */
+}
+
+.dx-header-row {
+    background-color: #254e70 !important;
+    color: white !important;
+}
+
+.fa-edit {
+    /* color: #35C6F2 !important; */
+    color: #254e70 !important;
+}
+
+.fa-trash {
+    color: #f36060 !important;
+}
+
+.fa-thumbs-up {
+    color: #85bb71 !important;
+}
+
+.far:hover,
+.fas:hover,
+.fa:hover {
+    cursor: pointer;
+}
+
+.fwb {
+    font-weight: bold !important;
+    color: gray !important;
+}
+.basic-btn-style{
+    background-color: white;
+    color: 254e70;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #254e70;
+    border-radius: 8px;
+    outline: none;
+    font-weight: 600;
+}
+.basic-btn-style:hover{
+    background-color: #254e70;
+    color: white;
+}
+.common-btn-style{
+    background-color: #254e70;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #254e70;
+    border-radius: 8px;
+    outline: none;
+    font-weight: 600;
+}
+.common-btn-style:hover{
+    background-color: #254e70;
+    color: white;
+}
+
+.f_row_color{
+    background-color:#92bd7f !important;
+}
+.f_row2_color{
+    background-color:#e09797 !important;
+}
+.sidebar{
+    background-color: #EEEFF0 ;
+}
+.dx-pager .dx-page-sizes .dx-selection, .dx-pager .dx-pages .dx-selection{
+    background-color: #254e70;
+    color: white;
+}
+
+
+

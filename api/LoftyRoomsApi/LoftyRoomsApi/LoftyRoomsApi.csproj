@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoftyRoomsDAL\LoftyRoomsDAL.csproj" />
+    <ProjectReference Include="..\LoftyRoomsModel\LoftyRoomsModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\" />
+    <Folder Include="Areas\Ad\Data\" />
+    <Folder Include="Areas\Ad\Models\" />
+    <Folder Include="Areas\Ad\Views\" />
+    <Folder Include="Areas\Partner\Data\" />
+    <Folder Include="Areas\Partner\Models\" />
+    <Folder Include="Areas\Partner\Views\" />
+    <Folder Include="Areas\Setting\Data\" />
+    <Folder Include="Areas\Setting\Models\" />
+    <Folder Include="Areas\Setting\Views\" />
+    <Folder Include="Files\ReferalDocuments\" />
+    <Folder Include="Files\Resumes\" />
+    <Folder Include="Files\WorkProcessScripts\" />
+  </ItemGroup>
+
+</Project>

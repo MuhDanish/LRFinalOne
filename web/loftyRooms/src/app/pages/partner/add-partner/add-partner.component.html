@@ -1,0 +1,245 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">{{innerHTML}}</h6>
+        </div>
+    </div>
+    <div class="col-lg-6 text-end">
+        <a class="common-btn-style btn" routerLink="/partner_list">Partner List</a>
+    </div>
+</div>
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">BASIC INFORMATION</h6>
+        </div>
+    </div>
+
+</div>
+
+<form [formGroup]="partnerModal" (ngSubmit)="AddUpdatePartner()">
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">FirstName<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName"
+                        tabindex="1" maxlength="40">
+                    <small class="text-muted ps-3" *ngIf="f['FirstName'].invalid && f['FirstName'].touched">
+                        <small class="text-muted" *ngIf="f['FirstName'].errors?.['required']">
+                            First Name is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName"
+                        tabindex="2" maxlength="40">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['LastName'].invalid && f['LastName'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['LastName'].errors?.['required']">Last Name is
+                            required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="Email" maxlength="30"
+                        tabindex="3">
+                    <small class="text-muted ps-3" *ngIf="f['Email'].invalid && f['Email'].touched">
+                        <small class="text-muted" *ngIf="f['Email'].errors?.['required']">
+                            Email is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Password <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Password" formControlName="Password"
+                        tabindex="4" maxlength="50">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['Password'].invalid && f['Password'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['Password'].errors?.['required']">
+                            Password is required.
+                        </small>
+                        <small class="text-muted text-danger" *ngIf="f['Password'].errors?.['minlength']">
+                            Password at least 4 characters.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" formControlName="Address" tabindex="5"
+                        maxlength="40">
+                    <small class="text-muted ps-3" *ngIf="f['Address'].invalid && f['Address'].touched">
+                        <small class="text-muted" *ngIf="f['Address'].errors?.['required']">
+                            Address Name is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control" placeholder="City" formControlName="City" tabindex="6"
+                        maxlength="40">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['City'].invalid && f['City'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['City'].errors?.['required']">City Name is
+                            required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">State</label>
+                    <input type="text" class="form-control" placeholder="State" formControlName="State" tabindex="7">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Zip Code</label>
+                    <input type="text" class="form-control" placeholder="Zip Code" formControlName="ZipCode"
+                        tabindex="8" maxlength="6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">Phone<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Phone" formControlName="Phone" tabindex="9"
+                        maxlength="11">
+                    <small class="text-muted ps-3" *ngIf="f['Phone'].invalid && f['Phone'].touched">
+                        <small class="text-muted" *ngIf="f['Phone'].errors?.['required']">
+                            Phone is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row styled-row align-items-center">
+        <div class="col-lg-6">
+            <div class="breadcrumb__main_wrapper">
+                <h6 class="mb-0">HOTEL INFORMATION</h6>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Room Type<span class="text-danger">*</span></label>
+                    <select class="form-select" aria-label="Default select example" formControlName="RoomId"
+                        tabindex="10">
+                        <option selected value="">Select Type</option>
+                        <option *ngFor="let item of roomType_list" [value]="item.roomId">
+                            {{item.roomType}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['RoomId'].invalid && f['RoomId'].touched">
+                        <small class="text-muted" *ngIf="f['RoomId'].errors?.['required']">
+                            Type is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">Hotel Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Hotel Name" formControlName="HotelName"
+                        tabindex="11">
+                    <small class="text-muted ps-3" *ngIf="f['HotelName'].invalid && f['HotelName'].touched">
+                        <small class="text-muted" *ngIf="f['HotelName'].errors?.['required']">
+                            Hotel Name is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" placeholder="DateEntry" formControlName="DateEntry"
+                        maxlength="100" tabindex="12">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <br>
+                    <label class="form-label">Allow Login</label>
+                    <mat-checkbox formControlName="AllowLogin" tabindex="13"></mat-checkbox>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Latitude</label>
+                    <input type="text" class="form-control" placeholder="Latitude" formControlName="Latitude"
+                        tabindex="14">
+                    <small class="text-muted ps-3" *ngIf="f['Latitude'].invalid && f['Latitude'].touched">
+                        <small class="text-muted" *ngIf="f['Latitude'].errors?.['required']">
+                            Latitude is required.
+                        </small>
+                    </small>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-select-wrapper">
+                    <label class="form-label">Longitude</label>
+                    <input type="text" class="form-control" placeholder="Longitude" formControlName="Longitude"
+                        tabindex="15">
+                    <small class="text-muted ps-3" *ngIf="f['Longitude'].invalid && f['Longitude'].touched">
+                        <small class="text-muted" *ngIf="f['Longitude'].errors?.['required']">
+                            Longitude is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-center pb-5 pt-5">
+        <button type="button" class="basic-btn-style mr-2 " (click)="resetpartnerModal()" tabindex="31">Reset</button>
+        <button type="submit" class="common-btn-style" tabindex="30">{{Sumbit_btn_text}}</button>
+    </div>
+
+</form>

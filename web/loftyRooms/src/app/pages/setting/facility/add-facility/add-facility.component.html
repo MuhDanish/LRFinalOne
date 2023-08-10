@@ -1,0 +1,58 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">{{innerHTML}}</h6>
+        </div>
+    </div>
+    <div class="col-lg-6 text-end">
+        <a class="common-btn-style btn" routerLink="/facilities">Facility List</a>
+    </div>
+</div>
+
+
+<form [formGroup]="facilityModal" (ngSubmit)="AddUpdateFacility()">
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <img [src]="PictureView" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="Image" accept=".png, .jpg, .jpeg"
+                    (change)="onImageChange($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage">
+                    <p class="text-danger" *ngIf="f['Image'].value ==''">Select the Image Only</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <input type="hidden" formControlName="FacilityId">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Facility Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Facility Name" formControlName="FacilityName"
+                        tabindex="1" maxlength="40">
+                    <small class="text-muted ps-3 text-danger"
+                        *ngIf="f['FacilityName'].invalid && f['FacilityName'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['FacilityName'].errors?.['required']">
+                            Facility Name is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Count<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Count" formControlName="Count" tabindex="2"
+                        maxlength="2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-lg-6 text-end pb-5 pt-5">
+        <button type="button" class="basic-btn-style mr-2 " (click)="resetadsModal()" tabindex="31">Reset</button>
+        <button type="submit" class="common-btn-style" tabindex="30">{{Sumbit_btn_text}}</button>
+    </div>
+
+</form>

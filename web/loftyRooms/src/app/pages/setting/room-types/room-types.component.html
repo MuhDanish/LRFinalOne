@@ -1,0 +1,83 @@
+<div class="row styled-row align-items-center">
+  <div class="col-lg-6">
+    <div class="breadcrumb__main_wrapper">
+      <h6 class="mb-0">Room Type</h6>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="action__btn_wrapper">
+      <ul class="justify-content-end">
+        <li *ngIf="service.IsAuthorized('20')">
+          <button (click)="openPopup(content)" class="common-btn-style"><img src="../../../../assets/dist/img/plus.svg">
+            Add Room Type</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row mt-5">
+  <div class="col-lg-12">
+    <div class="datatbale__main__wrapper">
+      <dx-data-grid [dataSource]="roomTypeList" [columnAutoWidth]="true" [columnResizingMode]="'widget'"
+        [filterRow]="{ visible: true }" [paging]="{ pageSize: 10, pageIndex: 0 }" [searchPanel]="{ visible: true }"
+        [showBorders]="true" [showRowLines]="true" [showColumnLines]="true" [sorting]="{ mode: 'multiple' }"
+        [allowColumnReordering]="true">
+
+        <dxi-column caption="Actions" alignment="center" cellTemplate="roomTypeList"></dxi-column>
+
+        <div *dxTemplate="let d of 'roomTypeList'">
+
+          <button class="custom__btn custom__btn_edit" *ngIf="service.IsAuthorized('20')"
+            (click)="EditRoomType(d.data,content)"><i class="fa fa-edit"></i></button>
+          <button class="custom__btn custom__btn_denger" *ngIf="service.IsAuthorized('22')"
+            (click)="DeleteRoomType(d.data.roomId)"><i class="fa fa-trash"></i></button>
+
+        </div>
+        <dxi-column caption="Room Id" dataField="roomId"></dxi-column>
+        <dxi-column caption="Room Type" dataField="roomType"></dxi-column>
+        <dxo-header-filter class="test" [visible]="true" class="test"></dxo-header-filter>
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+      </dx-data-grid>
+      <div class="mt-2">
+        <h4>Total Records: {{total_room}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Room Type</h4>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="roomTypeModal" (ngSubmit)="AddUpdateRoomType()">
+      <div class="row">
+        <div class="col-lg-12">
+          <input type="hidden" formControlName="RoomId">
+          <div class="form-input-wrapper">
+            <label class="form-label">Room Type<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" placeholder="Room Type" formControlName="RoomType" tabindex="1"
+              maxlength="40">
+            <small class="text-muted ps-3 text-danger" *ngIf="f['RoomType'].invalid && f['RoomType'].touched">
+              <small class="text-muted text-danger" *ngIf="f['RoomType'].errors?.['required']">
+                Room Type is required.
+              </small>
+            </small>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-end pr-2 mt-4">
+        <button type="submit" class="btn btn-primary me-2" [innerHTML]="button_text"></button>
+        <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

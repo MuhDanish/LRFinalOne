@@ -1,0 +1,324 @@
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">{{innerHTML}}</h6>
+        </div>
+    </div>
+    <div class="col-lg-6 text-end">
+        <a class="common-btn-style btn" routerLink="/ads_list">Ads List</a>
+    </div>
+</div>
+<div class="row styled-row align-items-center">
+    <div class="col-lg-6">
+        <div class="breadcrumb__main_wrapper">
+            <h6 class="mb-0">BASIC INFORMATION</h6>
+        </div>
+    </div>
+
+</div>
+
+<form [formGroup]="adsModal" (ngSubmit)="AddUpdateAds()">
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Partner <span class="text-danger">*</span></label>
+                    <select class="form-select" aria-label="Default select example" formControlName="PartnerId"
+                        tabindex="1">
+                        <option selected value="">Select Partner</option>
+                        <option *ngFor="let item of partner_list" [value]="item.partnerId">
+                            {{item.firstName}} {{item.lastName}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['PartnerId'].invalid && f['PartnerId'].touched">
+                        <small class="text-muted" *ngIf="f['PartnerId'].errors?.['PartnerId']">
+                            Partner is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">No Of Bed <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="No Of Bed" formControlName="NoOfBed"
+                        tabindex="2" maxlength="2">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['NoOfBed'].invalid && f['NoOfBed'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['NoOfBed'].errors?.['required']">No Of Bed is
+                            required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">No Of Person<span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="No Of Bed" formControlName="NoOfPerson"
+                        tabindex="3" maxlength="2">
+                    <small class="text-muted ps-3 text-danger"
+                        *ngIf="f['NoOfPerson'].invalid && f['NoOfPerson'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['NoOfPerson'].errors?.['required']">Number Of
+                            Person is required.
+                        </small>
+                    </small>
+                    <!-- <select class="form-select" aria-label="Default select example" formControlName="PersonId"
+                        tabindex="1">
+                        <option selected value="">Select Type</option>
+                        <option *ngFor="let item of person_list" [value]="item.personId">
+                            {{item.noOfPerson}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['PersonId'].invalid && f['PersonId'].touched">
+                        <small class="text-muted" *ngIf="f['PersonId'].errors?.['PersonId']">
+                            Person is required.
+                        </small>
+                    </small> -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Actual Price<span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="Actual Price" formControlName="Price"
+                        tabindex="4" maxlength="50">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['Price'].invalid && f['Price'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['Price'].errors?.['required']">
+                            Price is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Base Price<span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="Base Price" formControlName="BasePrice"
+                        tabindex="4" maxlength="50">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['BasePrice'].invalid && f['BasePrice'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['BasePrice'].errors?.['required']">
+                            Base Price is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Room Type<span class="text-danger">*</span></label>
+                    <select class="form-select" aria-label="Default select example" formControlName="RoomId"
+                        tabindex="1">
+                        <option selected value="">Select Room</option>
+                        <option *ngFor="let item of roomType_list" [value]="item.roomId">
+                            {{item.roomType}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['RoomId'].invalid && f['RoomId'].touched">
+                        <small class="text-muted" *ngIf="f['RoomId'].errors?.['required']">
+                            Person is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Ad Type<span class="text-danger">*</span></label>
+                    <select class="form-select" (change)="onAdTypeChange($event)" aria-label="Default select example"
+                        formControlName="AdTypeId" tabindex="1">
+                        <option selected value="">Select Ad Type</option>
+                        <option *ngFor="let item of adsTypes_list" [value]="item.adTypeId">
+                            {{item.adTypeName}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['AdTypeId'].invalid && f['AdTypeId'].touched">
+                        <small class="text-muted" *ngIf="f['AdTypeId'].errors?.['required']">
+                            Person is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <!-- <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Description<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Description" formControlName="Description"
+                        maxlength="100" tabindex="12">
+                    <small class="text-muted ps-3" *ngIf="f['Description'].invalid && f['Description'].touched">
+                        <small class="text-muted" *ngIf="f['Description'].errors?.['required']">
+                            Description is required.
+                        </small>
+                    </small>
+                </div>
+            </div> -->
+            <div class="col-lg-12" *ngIf="selectedOption=='2'">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Package<span class="text-danger">*</span></label>
+                    <select class="form-select" aria-label="Default select example" formControlName="PackageId"
+                        tabindex="1">
+                        <option selected value="">Select Package</option>
+                        <option *ngFor="let item of packages_list" [value]="item.packageId">
+                            {{item.promotionalText}}
+                        </option>
+                    </select>
+                    <small class="text-muted ps-3" *ngIf="f['PackageId'].invalid && f['PackageId'].touched">
+                        <small class="text-muted" *ngIf="f['PackageId'].errors?.['required']">
+                            Package is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-12" *ngIf="selectedOption=='2'">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Package Start Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" placeholder="PackageStartDate"
+                        formControlName="PackageStartDate" maxlength="100" tabindex="12">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Package End Date<span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" placeholder="PackageEndDate"
+                        formControlName="PackageEndDate" maxlength="100" tabindex="12">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row mt-2">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Facilities<span class="text-danger">*</span></label>
+                    <mat-select formControlName="Facilities" multiple class="form-control">
+                        <mat-option *ngFor="let item of facility_list"
+                            [value]="item.facilityId">{{item.facilityName}}</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Location<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Location" formControlName="Location"
+                        tabindex="2" maxlength="40">
+                    <small class="text-muted ps-3 text-danger" *ngIf="f['Location'].invalid && f['Location'].touched">
+                        <small class="text-muted text-danger" *ngIf="f['Location'].errors?.['required']">Location is
+                            required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Room No<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Room No" formControlName="RoomNo"
+                        maxlength="100" tabindex="12">
+                    <small class="text-muted ps-3" *ngIf="f['RoomNo'].invalid && f['RoomNo'].touched">
+                        <small class="text-muted" *ngIf="f['RoomNo'].errors?.['required']">
+                            Room No is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-input-wrapper">
+                    <label class="form-label">Description<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Description" formControlName="Description"
+                        maxlength="100" tabindex="13">
+                    <small class="text-muted ps-3" *ngIf="f['Description'].invalid && f['Description'].touched">
+                        <small class="text-muted" *ngIf="f['Description'].errors?.['required']">
+                            Description is required.
+                        </small>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="row mt-4">
+            <div class="col-lg-3">
+                <img [src]="AdsPictureView" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="AdImage1" accept=".png, .jpg, .jpeg"
+                    (change)="onAdChange1($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage">
+                    <p class="text-danger" *ngIf="f['AdImage1'].value ==''">Select the Image Only</p>
+                </div>
+                <small class="text-muted ps-3 text-danger" *ngIf="f['AdImage1'].invalid && f['AdImage1'].touched">
+                    <small class="text-muted text-danger" *ngIf="f['AdImage1'].errors?.['required']">Image is
+                        required.
+                    </small>
+                </small>
+            </div>
+            <div class="col-lg-3">
+                <img [src]="AdsPictureView2" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="AdImage2" accept=".png, .jpg, .jpeg"
+                    (change)="onAdChange2($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage2">
+                    <p class="text-danger" *ngIf="f['AdImage2'].value ==''">Select the Image Only</p>
+                </div>
+                <small class="text-muted ps-3 text-danger" *ngIf="f['AdImage2'].invalid && f['AdImage2'].touched">
+                    <small class="text-muted text-danger" *ngIf="f['AdImage2'].errors?.['required']">Image is
+                        required.
+                    </small>
+                </small>
+            </div>
+            <div class="col-lg-3">
+                <img [src]="AdsPictureView3" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="AdImage3" accept=".png, .jpg, .jpeg"
+                    (change)="onAdChange3($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage3">
+                    <p class="text-danger" *ngIf="f['AdImage3'].value ==''">Select the Image Only</p>
+                </div>
+                <small class="text-muted ps-3 text-danger" *ngIf="f['AdImage3'].invalid && f['AdImage3'].touched">
+                    <small class="text-muted text-danger" *ngIf="f['AdImage3'].errors?.['required']">Image is
+                        required.
+                    </small>
+                </small>
+            </div>
+            <div class="col-lg-3">
+                <img [src]="AdsPictureView4" class="profilePicture" height="125px" width="170px">
+                <br>
+                <input type="file" class="form-control" formControlName="AdImage4" accept=".png, .jpg, .jpeg"
+                    (change)="onAdChange4($event)">
+                <div id="emailHelp" class="form-text" [hidden]="IsShowImage4">
+                    <p class="text-danger" *ngIf="f['AdImage4'].value ==''">Select the Image Only</p>
+                </div>
+                <small class="text-muted ps-3 text-danger" *ngIf="f['AdImage4'].invalid && f['AdImage4'].touched">
+                    <small class="text-muted text-danger" *ngIf="f['AdImage4'].errors?.['required']">Image is
+                        required.
+                    </small>
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center pb-5 pt-5">
+        <button type="button" class="basic-btn-style mr-2 " (click)="resetadsModal()" tabindex="31">Reset</button>
+        <button type="submit" class="common-btn-style" tabindex="30">{{Sumbit_btn_text}}</button>
+    </div>
+
+</form>
